@@ -1,0 +1,38 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    color: #fff;
+    background-color: gray;
+
+}
+body{
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+
+}
+form{
+    display: flex;
+    flex-direction: column;
+    /* gap: 5px; */
+
+}
+input{
+    border: none;
+    background-color: darkgrey;
+    padding: 5px;
+}
+input::placeholder{
+    color: #fff;;
+}
+button{
+    display: block;
+    align-self: flex-end;
+    margin-top: 10px;
+    padding: 5px;
+    border: none;
+    color: #fff;;
+    font-weight: 200;
+    background-color: 	#0000FF;
+    border-radius: 5px;
+}
