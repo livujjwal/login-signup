@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-const Signup = () => {
+const Signup = ({setToken}) => {
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -19,10 +19,13 @@ const Signup = () => {
     event.preventDefault();
     if (!name || !email || !password || !confirmPassword) {
       setError("All fields are required");
+      setSuccess("");
     } else if (password !== confirmPassword) {
-      setError("Password not match required");
+      setError("Password not match ");
+      setSuccess("");
     } else if (!email.includes("@")) {
       setError("Valid email address required");
+      setSuccess("");
     } else {
       axios
         .post("https://instagram-express-app.vercel.app/api/auth/signup", {
@@ -30,13 +33,25 @@ const Signup = () => {
           email,
           password,
         })
-        .then((response) => console.log(response.data));
+        .then((response) => {
+          console.log(response.data.data.token);
+          setToken(response.data.data.token);
+          localStorage.setItem("token",response.data.data.token)
+          setSuccess("Signup successfully");
+          setError("");
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
+          setSuccess("");
+          setError(err.response.data.message);
+        });
     }
   }
   return (
-    <div>
+    <div className="signup">
       <h1>Signup Page</h1>
-      {error && <h2 style={{ color: "red" }}>{error}</h2>}
+      {error && <h2 style={{ color: "#FF0000" }}>{error}</h2>}
+      {success && <h2 style={{ color: "green" }}>{success}</h2>}
       <form onSubmit={handleSubmit}>
         <label>Your Name</label>
         <input

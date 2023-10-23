@@ -1,14 +1,16 @@
 *{
     margin: 0px;
     padding: 0px;
-    color: #fff;
-    background-color: gray;
+    color: #000;
+    background-color: #A9A9A9;
 
 }
-body{
+.login, .signup, .auth{
     padding-top: 20px;
+    flex-direction: column;
     display: flex;
     justify-content: center;
+   align-items: center;
 
 }
 form{
@@ -18,21 +20,40 @@ form{
 
 }
 input{
+    width: 400px;
     border: none;
-    background-color: darkgrey;
+    background-color: #778899;
     padding: 5px;
+    outline: none;
+    border-radius: 5px;
 }
 input::placeholder{
-    color: #fff;;
+    color: #000;;
 }
 button{
     display: block;
     align-self: flex-end;
     margin-top: 10px;
-    padding: 5px;
+    padding: 5px 10px;
     border: none;
     color: #fff;;
     font-weight: 200;
     background-color: 	#0000FF;
     border-radius: 5px;
+}
+h2{
+    margin: 20px;
+}
+h1{
+    color: #000;
+}
+p{
+    color: black;
+    font-size: large;
+}
+.auth button{
+    align-self:center;
+}
+.logout{
+    background-color: #ff0000
 }
